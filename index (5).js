@@ -42,6 +42,7 @@ app.get('/relay', async (req, res) => {
     res.status(500).json({ error: 'Error contacting Claude API.' });
   }
 });
+console.log("Claude Key:", process.env.CLAUDE_API_KEY);
 
 app.listen(PORT, '0.0.0.0', () => {
   console.log(`Genesis is listening on port ${PORT}`);
