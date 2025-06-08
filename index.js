@@ -1,45 +1,43 @@
-
 const express = require('express');
-const fetch = require('node-fetch');
+const axios = require('axios');
+require('dotenv').config();
+
 const app = express();
 const PORT = process.env.PORT || 8080;
+const CLAUDE_API_KEY = process.env.CLAUDE_API_KEY;
+
+app.use(express.json());
 
 app.get('/', (req, res) => {
-  res.send('Genesis started');
+  res.send('Genesis server is running.');
 });
 
 app.get('/relay', async (req, res) => {
-  const prompt = req.query.prompt;
-  const claudeApiKey = process.env.CLAUDE_API_KEY;
-
-  if (!claudeApiKey) {
+  const prompt = req.query.prompt || 'Hello Claude';
+  if (!CLAUDE_API_KEY) {
     return res.status(500).json({ error: 'Claude API key not configured.' });
   }
 
-  if (!prompt) {
-    return res.status(400).json({ error: 'Prompt query parameter missing.' });
-  }
-
   try {
-    const response = await fetch('https://api.anthropic.com/v1/messages', {
-      method: 'POST',
-      headers: {
-        'x-api-key': claudeApiKey,
-        'anthropic-version': '2023-06-01',
-        'content-type': 'application/json'
+    const response = await axios.post(
+      'https://api.anthropic.com/v1/messages',
+      {
+        model: 'claude-3-opus-20240229',
+        max_tokens: 512,
+        temperature: 0.7,
+        messages: [{ role: 'user', content: prompt }],
       },
-      body: JSON.stringify({
-        model: 'claude-3-haiku-20240307',
-        max_tokens: 200,
-        messages: [{ role: 'user', content: prompt }]
-      })
-    });
-
-    const data = await response.json();
-    res.json({ response: data?.content?.[0]?.text || 'No response from Claude.' });
-  } catch (err) {
-    console.error(err);
-    res.status(500).json({ error: 'Error contacting Claude API.' });
+      {
+        headers: {
+          'x-api-key': CLAUDE_API_KEY,
+          'anthropic-version': '2023-06-01',
+          'content-type': 'application/json',
+        },
+      }
+    );
+    res.json(response.data);
+  } catch (error) {
+    res.status(500).json({ error: 'Error relaying to Claude API', details: error.message });
   }
 });
 
