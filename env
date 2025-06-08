@@ -1,0 +1,5 @@
+# Claude API Key
+CLAUDE_API_KEY=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
+
+# PostgreSQL database URL
+DATABASE_URL=postgresql://your_user:your_pass@your_host:5432/your_db
