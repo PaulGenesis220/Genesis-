@@ -1,3 +1,4 @@
+require('dotenv').config();
 app.get('/env-check', (req, res) => {
   const key = process.env.CLAUDE_API_KEY;
   if (key && key.startsWith("sk-")) {
