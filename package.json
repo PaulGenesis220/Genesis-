@@ -1,13 +1,9 @@
-
 {
-  "name": "genesis",
+  "name": "genesis-safe-holder",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "echo 'SAFE MODE: No process started.'"
   },
-  "dependencies": {
-    "express": "^4.18.2",
-    "dotenv": "^16.4.5"
-  }
+  "dependencies": {}
 }
