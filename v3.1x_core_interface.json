@@ -1,0 +1,18 @@
+{
+  "module": "PromptSmith_Controller",
+  "version": "v3.1-X",
+  "core_interface": {
+    "input_modes": ["voice", "text", "n8n_hook", "goal_directive"],
+    "output_modes": ["prompt", "instruction", "scheduler_trigger"],
+    "status_reporting": {
+      "heartbeat": true,
+      "feedback_loop": "adaptive",
+      "last_output_hash": null
+    },
+    "control_flags": {
+      "stealth_mode": true,
+      "auto_corrective": true,
+      "sandbox_tested": true
+    }
+  }
+}
