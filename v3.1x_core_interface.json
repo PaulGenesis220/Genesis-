@@ -15,8 +15,7 @@
       "sandbox_tested": true
     }
   }
-}
-  "task_routing": {
+    "task_routing": {
     "input_channels": ["manual", "scheduled", "triggered", "observed"],
     "evaluation_criteria": {
       "goal_alignment": true,
@@ -48,3 +47,52 @@
     "log_results": true,
     "error_handling": "quarantine_then_repair"
   },
+      },
+    "PromptSmith": {
+      "version": "3.1-X",
+      "control": "autonomous-prompt-routing",
+      "functions": [
+        "prompt generation",
+        "prompt execution",
+        "prompt audit",
+        "multi-agent delegation",
+        "feedback loop scoring",
+        "response restructuring"
+      ],
+      "status": "pending activation",
+      "priority": "high",
+      "input_modes": [
+        "manual",
+        "goal-based trigger",
+        "Genesis signal"
+      ],
+      "linked_modules": [
+        "MasterDirective",
+        "DoubtingThomas",
+        "EmotionalIntelligence",
+        "Scheduler"
+      ]
+    ],
+    "learning_modes": [
+      "reflective",
+      "simulated",
+      "live input"
+    ],
+    "core_values": {
+      "stealth": true,
+      "efficiency": true,
+      "adaptability": true
+    },
+    "upgrade_path": {
+      "next_version": "3.2-G",
+      "conditions": [
+        "user verification",
+        "self-diagnostic passed",
+        "environment readiness confirmed"
+      ]
+    }
+  }
+}
+
+
+}
