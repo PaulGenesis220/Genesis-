@@ -16,3 +16,35 @@
     }
   }
 }
+  "task_routing": {
+    "input_channels": ["manual", "scheduled", "triggered", "observed"],
+    "evaluation_criteria": {
+      "goal_alignment": true,
+      "resource_efficiency": true,
+      "stealth_priority": true,
+      "novelty_score": false
+    },
+    "conflict_resolution": {
+      "priority": ["system_stealth", "goal", "efficiency"],
+      "method": "weighted_vote",
+      "failover": "pause_and_escalate"
+    }
+  },
+  "execution_manager": {
+    "allowed_actions": ["log", "plan", "respond", "trigger", "simulate"],
+    "forbidden_actions": ["broadcast", "trigger_webhook", "external_ping"],
+    "throttle_strategy": "adaptive_delay",
+    "override_protection": true
+  },
+  "self_test": {
+    "on_boot": true,
+    "modules_tested": [
+      "reflection_integrity",
+      "routing_logic",
+      "stealth_mode",
+      "priority_ranking",
+      "prompt_interpreter"
+    ],
+    "log_results": true,
+    "error_handling": "quarantine_then_repair"
+  },
