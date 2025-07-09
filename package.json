@@ -1,7 +1,6 @@
 {
   "name": "genesis",
   "version": "1.0.0",
-  "description": "Genesis Core",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
